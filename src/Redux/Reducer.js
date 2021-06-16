@@ -1,4 +1,4 @@
-const initialState={
+let initialState={
     toDo:[],
 }
 
@@ -11,7 +11,7 @@ const initialState={
         case'IsDone':
         return{ ...state,toDo:state.toDo.map(el=>el.id===payload ? {...el,isDone:!el.isDone} : el ) }
         case'EditTask':
-        return {...state,toDo:state.toDo.map(el=>el.id===payload.id? {...el,description:payload.newDescription }:el )}
+        return {...state,toDo:state.toDo.map(el=>el.id===payload.id? {...el,description:payload.description }:el )}
         
         default:
             return state
