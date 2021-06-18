@@ -8,16 +8,25 @@ const Add = () => {
 description:"",
 isDone:false})
 const dispatch = useDispatch(); 
-const handelAdd = ()=>{
+// const handelAdd = ()=>{
+//     dispatch(addTask(taskNew));
+//     setTaskNew({description:""})};  
+const handelSubmit =(e)=>
+{
+    e.preventDefault();
     dispatch(addTask(taskNew));
-    setTaskNew({description:""})};  
-
+    setTaskNew({description:""}); 
+    
+}
      
     return (
-        <div>
+        <div style={{backgroundColor:'white'}}>
+            <form onSubmit={handelSubmit}>
+                <h3>ToDo List : </h3>
          <input name="description" type="text" value={taskNew.description}  onChange={(e)=>{
                                                                     setTaskNew({id:Math.floor(Math.random()*100), description :e.target.value,isDone:false})}}/>
-         <button disabled={!taskNew.description} onClick={handelAdd }>AddTask</button>   
+         <button disabled={!taskNew.description} >New Task</button>   
+         </form>
         </div>
     )
     }
